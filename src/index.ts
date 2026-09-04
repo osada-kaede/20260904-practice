@@ -6,12 +6,12 @@ const app = express();
 const port: number = 3000;
 
 // 設定
-app.use(express.urlencoded({ extended: true })); // フォームデータの受信設定
-app.use(express.json()); // JSONデータの受信設定（これがないとAPIが動かない）
+app.use(express.json()); // 追加：JSON形式のリクエストボディをパースする
+app.use(express.urlencoded({ extended: true })); // POST通信設定
 app.use(express.static(path.join(__dirname, 'public'))); // 静的ファイルの指定
-
 app.set('view engine', 'ejs'); // テンプレートエンジンにEJSを設定
 app.set('views', path.join(__dirname, 'views')); // ビューのディレクトリを設定
+
 
 // ルーティング登録 (/todos パス配下に集約)
 app.use('/todos', todoRoutes);
