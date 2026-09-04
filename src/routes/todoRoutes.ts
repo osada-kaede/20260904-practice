@@ -56,8 +56,10 @@ router.put('/api/:id', async (req: Request, res: Response) => {
         }
 
 
-        const { title, completed } = req.body;
-        const updatedTodo = await TodoModel.update(id, { title, completed });
+        const { completed } = req.body;
+        const updatedTodo = await TodoModel.update(id, { completed });
+
+
 
 
         if (!updatedTodo) {
@@ -71,6 +73,7 @@ router.put('/api/:id', async (req: Request, res: Response) => {
         res.status(500).json({ message: 'TODOの更新に失敗しました。' });
     }
 });
+
 
 
 // DELETE /todos/api/:id - TODOの削除

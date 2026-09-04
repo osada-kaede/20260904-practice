@@ -14,12 +14,16 @@ app.set('views', path.join(__dirname, 'views')); // ビューのディレクト�
 
 
 // ルーティング登録 (/todos パス配下に集約)
+// products 以下の ルーターをインポート
+import todoRoutes from './routes/todoRoutes';
 app.use('/todos', todoRoutes);
 
-// ルートパスへのアクセスを /todos にリダイレクト（一本化する）
+
+// ルートパスへのアクセスを /todos にリダイレクト
 app.get('/', (req: Request, res: Response) => {
     res.redirect('/todos');
 });
+
 
 app.listen(port, (): void => {
     console.log(`Example app listening on port ${port}`);
